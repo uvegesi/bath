@@ -51,8 +51,7 @@ def guest_in_one_room():
     
 guest_in_one_room()
 
-#2/b
-
+#3 - 2nd iteration
 def guest_in_one_room2():
     guests = []
     visiting_set = set()
@@ -67,3 +66,45 @@ def guest_in_one_room2():
     return len(guests)
             
 print(guest_in_one_room2())
+
+#4
+def int_to_second(hour, minute, second):
+    return (hour * 3600) + (minute * 60) + second
+
+def guest_spent_most_time():
+    guest = []
+    spent_max_time_in, spent_time_in, time_in, time_out = 0, 0, 0, 0
+    found_time_in = False
+    for i in range(len(entries_list)-2):
+        if entries_list[i][0] == entries_list[i+1][0] and not found_time_in:
+            time_in = int_to_second(entries_list[i][3], entries_list[i][4], entries_list[i][5])
+            found_time_in = True
+        elif entries_list[i][0] != entries_list[i+1][0] and found_time_in:
+            time_out = int_to_second(entries_list[i][3], entries_list[i][4], entries_list[i][5])
+            found_time_in = False
+        if time_in and time_out:
+            spent_time_in = time_out - time_in
+            if spent_time_in > spent_max_time_in:
+                spent_max_time_in = spent_time_in
+                guest.clear()
+                guest = [entries_list[i][0], spent_max_time_in]
+                                
+    return(guest)
+
+print(guest_spent_most_time())
+
+#5
+
+def num_of_guest_in_periods(in_hour, in_min, in_sec, out_hour, out_min, out_sec):
+    count = 0
+    for i in range(len(entries_list) - 2):
+        if entries_list[i][0] == entries_list[i+1][0] and entries_list[i][1] == 0 and entries_list[i][2] == 1:
+            if in_hour <= entries_list[i][3] <= out_hour:
+                if in_min <= entries_list[i][4] <= out_min:
+                    if in_sec <= entries_list[i][5] <= out_sec:
+                        count += 1
+    print(f'{count} guest arrived to the bath between {in_hour} and {out_hour +1}.')
+
+num_of_guest_in_periods(6, 0, 0, 8, 59, 59)
+num_of_guest_in_periods(9, 0, 0, 15, 59, 59)
+num_of_guest_in_periods(16, 0, 0, 19, 59, 59)
