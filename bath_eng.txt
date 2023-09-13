@@ -1,0 +1,62 @@
+4. Bath
+The use of various access control and internal movement tracking systems in baths is becoming increasingly common. One bath facility would like to assess the bathing habits of its guests to improve its services. Therefore, they randomly selected data from guests during a day.
+
+The bath facility has four separate sections. Guests can access the bath sections by passing through the corridor when exiting the changing rooms, and they can also exit the bath and return to the changing rooms through the corridor. Each guest receives a wristband upon entry. The sensor on the wristband records every entry and exit to and from each section. Each guest leaves the changing room once – at that point, they enter the inner area of the bath – and enters the changing room once – at that point, they leave the bath. Guests do not return to the bath during the day. The bath is open from 6:00 AM to 8:00 PM.
+
+The space-separated 'furdoadat.txt' file can contain a maximum of 800 data rows.
+
+There are data for 100 bath guests in the file. The list is grouped by guest, sorted by time within that group. The order of the guests is determined by the time they exit from the changing rooms.
+
+- The first value in each row is a three-digit number representing the guest's identifier.
+- The second value in each row is the identifier of the bath section.
+  Section Identifier:
+  Changing Room: 0
+  Pool: 1
+  Saunas: 2
+  Thermal Pools: 3
+  Beach: 4
+- The third value in each row is 0 if the guest entered the specified section and 1 if they exited from the section.
+- The fourth, fifth, and sixth values represent the time of entry or exit in the format hour minute second in 24-hour format.
+
+For example:
+453 0 1 6 15 27
+453 1 0 6 17 19
+453 1 1 6 52 56
+453 0 0 6 56 32
+...
+266 0 1 16 7 52
+266 4 0 16 9 30
+...
+
+In the example, data for guests with identifiers 453 and 266 are shown. Guest 453 exited the changing room at 6:15:27, entered the pool at 6:17:19, exited the pool at 6:52:56, and entered the changing room again at 6:56:32.
+
+Create a program that, using the data from the 'furdoadat.txt' file, answers the following questions! Save the program's source code as 'furdostat'! (When writing the program, you do not need to verify the accuracy or validity of the data provided; you can assume that the available data conforms to the description.)
+
+Before displaying the results of subtasks that require output to the screen, print the task number on the screen (e.g., Task 4)! You may use non-accented characters for text output.
+
+1. Read the content of the 'furdoadat.txt' file.
+2. Display on the screen when the first and last guest exited the changing room.
+3. Determine and display on the screen how many bath guests visited only one section outside the changing room and used that section only once.
+4. Determine which guest spent the most time in the bath! Display their ID and the time spent in the bath on the screen. It's enough to display the data of one of the guests who spent the most time in the bath.
+5. Create statistics on how many guests arrived at the bath between 06:00:00-08:59:59, 09:00:00-15:59:59, and 16:00:00-19:59:59. Display the results on the screen in the format shown in the sample.
+6. Create a list of guests who visited the sauna section and the time they spent there! Write the guest's ID and the time spent in the sauna in the 'sauna.txt' file. Make sure that each guest may have visited the sauna section multiple times during the day.
+7. Create a list that specifies how many guests used each section! Display the results on the screen according to the sample. If a guest visited a section multiple times during the day, count them only once in the statistics.
+
+Sample text output formatting:
+Task 2
+The first guest exited the changing room at 6:14:56.
+The last guest exited the changing room at 18:35:37.
+Task 3
+There were 33 guests who visited only one section in the bath.
+Task 4
+The guest who spent the most time:
+Guest 306 spent 6 hours, 41 minutes, and 19 seconds.
+Task 5
+Between 6-9 AM, 9 guests arrived.
+Between 9 AM-4 PM, 45 guests arrived.
+Between 4-8 PM, 46 guests arrived.
+Task 7
+Pool: 41 guests
+Saunas: 52 guests
+Thermal Pools: 54 guests
+Beach: 48 guests
