@@ -91,7 +91,7 @@ def guest_spent_most_time():
                                 
     return(guest)
 
-print(guest_spent_most_time())
+#print(guest_spent_most_time())
 
 #5
 
@@ -108,3 +108,27 @@ def num_of_guest_in_periods(in_hour, in_min, in_sec, out_hour, out_min, out_sec)
 num_of_guest_in_periods(6, 0, 0, 8, 59, 59)
 num_of_guest_in_periods(9, 0, 0, 15, 59, 59)
 num_of_guest_in_periods(16, 0, 0, 19, 59, 59)
+
+#6
+
+def sec_to_int(sec):
+    hour = sec // 3600
+    min = (sec % 3600) // 60
+    sec = sec % 60
+    return [hour, min, sec]
+
+def in_the_sauna():
+    #guests_in_sauna = []
+    in_sauna = list(filter(lambda x: x[1] == 2, entries_list))
+    for i in range(0, len(in_sauna), 2):
+        time_spent = sec_to_int(abs(int_to_second(in_sauna[i][3], in_sauna[i][4], in_sauna[i][5]) - 
+                         int_to_second(in_sauna[i+1][3], in_sauna[i+1][4], in_sauna[i+1][5])))      
+        #guests_in_sauna.append([in_sauna[i][0], time_spent[0], time_spent[1], time_spent[2]])
+        print(f'{in_sauna[i][0]} - {time_spent[0]}:{time_spent[1]}:{time_spent[2]}')
+        print(in_sauna[i][0],'-', ':'.join((map(lambda x: str(x), time_spent))))
+        print(in_sauna[i][0],'-', ':'.join((map(str, time_spent))))
+    
+in_the_sauna()
+
+print(int_to_second(7, 18, 52))
+print(sec_to_int(26332))
