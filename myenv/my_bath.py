@@ -157,10 +157,11 @@ def guests_per_pools_2():
     for pool in pool_set:
         guest_set = set()
         for entry in entries_list:
-            if pool in entry:
+            if entry[1] == pool:
                 guest_set.add(entry[0])
         guests_in_pools.append([pool, guest_set])
     
-    print(guests_in_pools)
+    for i in range(5):
+        print(guests_in_pools[i][0], len(guests_in_pools[i][1]))
     
 guests_per_pools_2()
