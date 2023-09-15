@@ -132,3 +132,35 @@ in_the_sauna()
 
 print(int_to_second(7, 18, 52))
 print(sec_to_int(26332))
+
+#7
+def return_guest_only(entry, pool):
+    if pool in entry:
+        return entry[0]
+
+def guests_per_pools():
+    pool_list = list(set(map(lambda x: x[1], entries_list)))
+    guests_pool = []
+    for pool in pool_list:
+        guest_set = set(map(lambda entry: return_guest_only(entry, pool), entries_list))
+        guests_pool.append([pool, guest_set])
+    
+    print(guests_pool)
+    
+guests_per_pools()
+
+#7b
+
+def guests_per_pools_2():
+    pool_set = set(map(lambda x: x[1], entries_list))
+    guests_in_pools = []
+    for pool in pool_set:
+        guest_set = set()
+        for entry in entries_list:
+            if pool in entry:
+                guest_set.add(entry[0])
+        guests_in_pools.append([pool, guest_set])
+    
+    print(guests_in_pools)
+    
+guests_per_pools_2()
